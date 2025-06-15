@@ -7,6 +7,7 @@ from pydantic import BaseModel, validator
 class Extra(BaseModel):
     name: str
     price: float
+    id: int
 
 class Pizza(BaseModel):
     id: int

@@ -68,14 +68,14 @@ const PizzaDetail = ({ pizza, onBack, onAddToCart, onOrder }) => {
             <strong>Total:</strong> ${calculatePrice().toFixed(2)}
           </p>
           <button className="pizzaDetailOrderButton" onClick={() => {
-            onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e)));
+            onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e.name)));
             onOrder();
           }}>
             Order
           </button>
           <button
             className="pizzaDetailAddToCartButton"
-            onClick={() => onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e)))}
+            onClick={() => onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e.name)))}
           >
             Add to Cart
           </button>
