@@ -14,7 +14,9 @@ class OrderRepository:
         order = Order(
             items=[item.dict() for item in order_in.items],
             price=order_in.price,
-            status=order_in.status
+            status=order_in.status,
+            customer_name=order_in.customer_name,
+            customer_email=order_in.customer_email,
         )
         self.db.add(order)
         await self.db.commit()
