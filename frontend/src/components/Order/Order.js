@@ -33,7 +33,7 @@ const Order = ({ cart, onCancel }) => {
           extras: extras.map(e => e.id),
           quantity,
         })),
-        total_price: total,
+        price: total,
       };
 
       await submitOrder(orderPayload);
