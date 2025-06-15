@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Order.css";
 import {submitOrder} from "../../api";
 
-const Order = ({ cart, onCancel }) => {
+const Order = ({ cart, onCancel, onClear }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,7 +37,7 @@ const Order = ({ cart, onCancel }) => {
       };
 
       await submitOrder(orderPayload);
-
+      onClear();
       setSuccess(true);
     } catch (err) {
       setError("Failed to submit order. Please try again.");
