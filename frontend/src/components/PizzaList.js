@@ -1,71 +1,109 @@
 import React, { useEffect, useState } from "react";
 import { fetchPizzas } from "../api";
 
-const cardStyle = {
-  border: "1px solid #ddd",
-  borderRadius: 8,
-  padding: 16,
-  margin: 12,
-  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  cursor: "pointer",
-  maxWidth: 220,
-  textAlign: "center",
-  transition: "transform 0.2s",
-  backgroundColor: "#fff",
-};
-
-const cardHover = {
-  transform: "scale(1.05)",
-  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-};
-
-const imgStyle = {
-  borderRadius: "8px",
-  width: "100%",
-  height: "140px",
-  objectFit: "cover",
-  marginBottom: 12,
-};
-
-const listContainer = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-};
-
-function PizzaList({ onSelectPizza }) {
+const PizzaList = ({ onSelectPizza }) => {
   const [pizzas, setPizzas] = useState([]);
-  const [hoveredId, setHoveredId] = useState(null);
 
   useEffect(() => {
     fetchPizzas().then((res) => setPizzas(res.data));
   }, []);
 
   return (
-    <div>
-      <h2 style={{ textAlign: "center", marginTop: 20 }}>Available Pizzas</h2>
-      <div style={listContainer}>
-        {pizzas.map((p) => (
+    <div style={styles.page}>
+      <h1 style={styles.title}>Our Delicious Pizzas</h1>
+      <div style={styles.grid}>
+        {pizzas.map((pizza) => (
           <div
-            key={p.id}
-            style={{
-              ...cardStyle,
-              ...(hoveredId === p.id ? cardHover : {}),
+            key={pizza.id}
+            style={styles.card}
+            onClick={() => onSelectPizza(pizza)}
+            tabIndex={0}
+            role="button"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") onSelectPizza(pizza);
             }}
-            onClick={() => onSelectPizza(p)}
-            onMouseEnter={() => setHoveredId(p.id)}
-            onMouseLeave={() => setHoveredId(null)}
           >
-            <img src={`/images/${p.img}`} alt={p.name} style={imgStyle} />
-            <h3 style={{ margin: "8px 0" }}>{p.name}</h3>
-            <p style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
-              €{p.price.toFixed(2)}
-            </p>
+            <div style={styles.imgWrapper}>
+              <img
+                src={`/images/${pizza.img}`}
+                alt={pizza.name}
+                style={styles.image}
+                loading="lazy"
+              />
+            </div>
+            <div style={styles.info}>
+              <h3 style={styles.pizzaName}>{pizza.name}</h3>
+              <p style={styles.price}>€{pizza.price.toFixed(2)}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
+
+const styles = {
+  page: {
+    padding: "40px 20px",
+    maxWidth: 1200,
+    margin: "0 auto",
+    fontFamily:
+      "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    color: "#2c2c2c",
+  },
+  title: {
+    textAlign: "center",
+    fontWeight: 700,
+    fontSize: "2.5rem",
+    marginBottom: 40,
+    color: "#d84315",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: 30,
+  },
+  card: {
+    background: "#fff",
+    borderRadius: 14,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06)",
+    cursor: "pointer",
+    outline: "none",
+    display: "flex",
+    flexDirection: "column",
+    transition: "transform 0.25s ease, box-shadow 0.25s ease",
+  },
+  imgWrapper: {
+    overflow: "hidden",
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+  },
+  image: {
+    width: "100%",
+    height: 180,
+    objectFit: "cover",
+    display: "block",
+    transition: "transform 0.3s ease",
+  },
+  info: {
+    padding: 20,
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  pizzaName: {
+    margin: 0,
+    fontWeight: 700,
+    fontSize: "1.3rem",
+    color: "#4e342e",
+  },
+  price: {
+    marginTop: 12,
+    fontWeight: 600,
+    fontSize: "1.1rem",
+    color: "#d84315",
+  },
+};
 
 export default PizzaList;

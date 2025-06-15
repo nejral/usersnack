@@ -6,8 +6,15 @@ function App() {
   const [selectedPizza, setSelectedPizza] = useState(null);
 
   return (
-    <div className="App">
-      <h1>Usersnack Pizza Delivery</h1>
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#fff5f0",
+        paddingBottom: 40,
+        fontFamily:
+          "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+      }}
+    >
       {!selectedPizza ? (
         <PizzaList onSelectPizza={setSelectedPizza} />
       ) : (
