@@ -25,13 +25,12 @@ const Order = ({ cart, onCancel }) => {
     setError(null);
 
     try {
-      // Construct order payload matching your backend schema
       const orderPayload = {
         customer_name: name,
         customer_email: email,
         items: cart.map(({ pizza, extras, quantity }) => ({
           pizza_id: pizza.id,
-          extras: extras.map(e => ({ name: e.name, price: e.price })), // or just names or IDs if your backend expects
+          extras: extras.map(e => e.id),
           quantity,
         })),
         total_price: total,
