@@ -1,0 +1,119 @@
+.orderOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  z-index: 2000;
+    scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+.orderPanel::-webkit-scrollbar {
+  display: none;
+}
+
+.orderPanel {
+  background: #fff;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px 24px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: #3e3e3e;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+.orderClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.orderTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d84315;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.orderCartList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.orderCartItem {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.orderCartExtras {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 4px 0;
+}
+
+.orderCartPrice {
+  color: #d84315;
+  font-weight: 600;
+}
+
+.orderTotal {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.orderForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.orderForm label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #4e342e;
+}
+
+.orderForm input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.placeOrderButton {
+  background-color: #d84315;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 12px rgba(216, 67, 21, 0.4);
+}
+
+.placeOrderButton:hover {
+  background-color: #bf360c;
+}

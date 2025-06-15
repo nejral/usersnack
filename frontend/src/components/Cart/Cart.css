@@ -1,0 +1,134 @@
+.cartOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  z-index: 2000;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cartPanel::-webkit-scrollbar {
+  display: none;
+}
+
+.cartPanel {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 14px;
+  padding: 30px 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  color: #3e3e3e;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+
+.cartClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cartTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d84315;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.cartEmpty {
+  text-align: center;
+  color: #777;
+  margin: 40px 0;
+}
+
+.cartList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.cartItem {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cartExtras {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.cartItemPrice {
+  display: block;
+  text-align: right;
+  font-weight: 600;
+  color: #d84315;
+}
+
+.cartFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cartTotal {
+  text-align: right;
+  font-size: 1.2rem;
+}
+
+.cartOrderButton,
+.cartClearButton {
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.cartOrderButton {
+  background-color: #d84315;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(216,67,21,0.4);
+}
+
+.cartClearButton {
+  background-color: #ccc;
+  color: #222;
+}
+
+.cartQuantityControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.qtyBtn {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.qtyBtn:hover {
+  background-color: #ddd;
+}

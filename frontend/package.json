@@ -12,7 +12,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "proxy": "http://backend:8000",
+  "proxy": "https://usersnack-production.up.railway.app/",
   "browserslist": {
     "production": [
       ">0.2%",
