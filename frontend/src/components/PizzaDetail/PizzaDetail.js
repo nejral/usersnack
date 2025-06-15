@@ -12,9 +12,9 @@ const PizzaDetail = ({ pizza, onBack, onAddToCart, onOrder }) => {
 
   const toggleExtra = (extra) => {
     setSelectedExtras((prev) =>
-      prev.includes(extra.id)
-        ? prev.filter((e) => e !== extra.id)
-        : [...prev, extra.id]
+      prev.includes(extra.name)
+        ? prev.filter((e) => e !== extra.name)
+        : [...prev, extra.name]
     );
   };
 
@@ -55,7 +55,7 @@ const PizzaDetail = ({ pizza, onBack, onAddToCart, onOrder }) => {
                 <label className="pizzaDetailExtraLabel">
                   <input
                     type="checkbox"
-                    checked={selectedExtras.includes(extra.id)}
+                    checked={selectedExtras.includes(extra.name)}
                     onChange={() => toggleExtra(extra)}
                     className="pizzaDetailCheckbox"
                   />
@@ -68,14 +68,14 @@ const PizzaDetail = ({ pizza, onBack, onAddToCart, onOrder }) => {
             <strong>Total:</strong> ${calculatePrice().toFixed(2)}
           </p>
           <button className="pizzaDetailOrderButton" onClick={() => {
-            onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e.id)));
+            onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e)));
             onOrder();
           }}>
             Order
           </button>
           <button
             className="pizzaDetailAddToCartButton"
-            onClick={() => onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e.name)))}
+            onClick={() => onAddToCart(pizza, extras.filter((e) => selectedExtras.includes(e)))}
           >
             Add to Cart
           </button>
