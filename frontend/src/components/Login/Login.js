@@ -17,15 +17,9 @@ const Login = ({ onLogin }) => {
         password,
       };
 
-      const res = await login(credentials);
+      const res = await login(credentials); // This is already parsed JSON
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data?.message || "Invalid login credentials");
-      }
-
-      onLogin(data);
+      onLogin(res.data);
     } catch (err) {
       setError(err.message || "Login failed");
     }
