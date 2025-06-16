@@ -15,6 +15,9 @@ class OrderService:
     async def submit_order(self, order_in: OrderCreate):
         await self.order_repo.submit_order(order_in)
 
+    async def get_all_orders(self):
+        return await self.order_repo.get_all_orders()
+
 def get_order_service(db: AsyncSession = Depends(get_db)):
     order_repo = OrderRepository(db)
     return OrderService(order_repo=order_repo)

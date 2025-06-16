@@ -1,0 +1,37 @@
+.ordersPage {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.ordersTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.orderCard {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.backButton {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background-color: #d35400;
+}

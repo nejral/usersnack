@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.router import pizza, order
+from app.db.init_db import init_db
+from app.db.session import engine
+from app.router import pizza, order, user
 
 app = FastAPI(title="Usersnack Pizza API")
 
@@ -22,6 +24,7 @@ app.add_middleware(
 
 app.include_router(pizza.router, prefix="/api", tags=["Pizzas"])
 app.include_router(order.router, prefix="/api", tags=["Order"])
+app.include_router(user.router, prefix="/api", tags=["User"])
 
 @app.get("/")
 def root():

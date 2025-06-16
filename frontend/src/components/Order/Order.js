@@ -36,9 +36,13 @@ const Order = ({ cart, onCancel, onClear }) => {
         price: total,
       };
 
-      await submitOrder(orderPayload);
-      onClear();
-      setSuccess(true);
+      const response = await submitOrder(orderPayload);
+      if (response.status === 200) {
+        onClear();
+        setSuccess(true);
+      } else {
+        setError("Failed to submit order. Please try again.");
+      }
     } catch (err) {
       setError("Failed to submit order. Please try again.");
     } finally {

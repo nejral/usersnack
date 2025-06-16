@@ -21,3 +21,7 @@ class OrderRepository:
         self.db.add(order)
         await self.db.commit()
         await self.db.refresh(order)
+
+    async def get_all_orders(self):
+        result = await self.db.execute(select(Order))
+        return result.scalars().all()

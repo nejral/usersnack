@@ -4,11 +4,29 @@ import "./Login.css";
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // -
-    onLogin({ email, password });
+    setError("");
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Invalid login credentials");
+      }
+
+      const user = await res.json();
+
+      onLogin(user);
+    } catch (err) {
+      setError(err.message || "Login failed");
+    }
   };
 
   return (
@@ -36,6 +54,7 @@ const Login = ({ onLogin }) => {
               required
             />
           </label>
+          {error && <div className="loginError">{error}</div>}
           <button type="submit" className="loginButton">
             Log In
           </button>
