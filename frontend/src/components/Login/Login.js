@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import {login, submitOrder} from "../../api";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -11,11 +12,7 @@ const Login = ({ onLogin }) => {
     setError("");
 
     try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await login(JSON.stringify({ email, password }));
 
       if (!res.ok) {
         throw new Error("Invalid login credentials");
